@@ -13,7 +13,12 @@ import org.firstinspires.ftc.teamcode.opmodes.PracticeAutonomous;
 public class Drive9330 {
     private Hardware9330 hwMap = null;
     Integer turnError = 1;
-    Gyro9330 gyro;
+    Gyro9330 gyro; 
+    int dist;
+    int degree;
+
+
+
 
     public Drive9330(Hardware9330 robotMap) {
         hwMap = robotMap;
@@ -73,6 +78,15 @@ public class Drive9330 {
             } else {
                 turnRight(speed, allWheel);
             }
+        }
+    }
+
+    public void Drive(int[][] points){
+    for(int i = 0; i < points.length; i++){
+            dist = points[i][0];
+            degree = points[i][1];
+            turnLeft(degree);
+            driveDistance(dist);
         }
     }
 }
