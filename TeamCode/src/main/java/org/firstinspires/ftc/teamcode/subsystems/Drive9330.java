@@ -85,7 +85,7 @@ public class Drive9330 {
     for(int i = 0; i < points.length; i++){
             dist = points[i][0];
             degree = points[i][1];
-            turnLeft(degree);
+            turnLeft(degree,true);
             driveDistance(dist);
         }
     }
