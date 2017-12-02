@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.teamcode.Hardware9330;
 import org.firstinspires.ftc.teamcode.subsystems.JewelArm9330;
@@ -63,11 +64,11 @@ public class TeleOp9330 extends OpMode {
      */
     @Override
     public void loop() {
-        yPower = gamepad1.left_stick_y;
+        yPower = -gamepad1.left_stick_y;
         spinPower = gamepad1.right_stick_x;
 
         //Set powers of the motors
-        Hardware9330.leftMotor.setPower(-yPower - spinPower);
+        Hardware9330.leftMotor.setPower(yPower + spinPower);
         Hardware9330.rightMotor.setPower(yPower - spinPower);
 
         //If "A" is pressed on the gamepad toggle the lower clamp
@@ -100,16 +101,6 @@ public class TeleOp9330 extends OpMode {
             bBtnHeld = false;
         }
 
-        //If "B" is pressed on the gamepad toggle the high clamp
-        if (gamepad2.b) {
-            if (bBtnHeld == true) return;
-            telemetry.addData("Program", "High Clamp toggled!");
-            clamps.toggleHighClamp();
-            bBtnHeld = true;
-        } else {
-            bBtnHeld = false;
-        }
-
         //If up on dpad is pressed, move motor up
         //If down on dpad is pressed, move motor down
         //Otherwise motor is not moving
@@ -122,16 +113,6 @@ public class TeleOp9330 extends OpMode {
         } else {
             glyphLift9330.liftStop();
         }
-
-        //If "X" is pressed on the gamepad toggle the crystal arm servo
-        /*
-        if(gamepad2.x){
-            if(xBtnHeld == true) return;
-            telemetry.addData("Program", "Arm toggled!");
-            crystalArm.toggleArmServo();
-            xBtnHeld = true;
-        } else xBtnHeld = false;
-        */
 
         //If left is pressed on the dpad toggle the hand servo
         if (gamepad2.left_bumper) {
@@ -148,6 +129,13 @@ public class TeleOp9330 extends OpMode {
             telemetry.addData("Program", "Wrist toggled!!! WOW!");
             rBumpHeld = true;
         } else rBumpHeld = false;
+
+        if (gamepad2.left_trigger > 0.1) {
+            relicPickup.moveArm(-(int)gamepad2.left_trigger);
+        } else if(gamepad2.right_trigger > 0.1) {
+            relicPickup.moveArm((int)gamepad2.right_trigger);
+        }
+
 
         telemetry.update();
     }

@@ -70,5 +70,6 @@ public class Hardware9330 {
         leftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         glyphLiftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        relicArmMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 }

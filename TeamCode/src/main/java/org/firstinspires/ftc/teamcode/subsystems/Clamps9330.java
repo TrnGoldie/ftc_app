@@ -12,8 +12,8 @@ public class Clamps9330 {
     private boolean highClampEngaged = true;
 
     //   Declaring Set positions for servo
-    static final Double ENGAGED_POS = 1.0;
-    static final Double RELEASE_POS = 0.0;
+    static final Double ENGAGED_POS = 0.0;
+    static final Double RELEASE_POS = 1.0;
     //   accessing Hardware9330
     private Hardware9330 hwMap = null;
 
