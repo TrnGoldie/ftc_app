@@ -21,7 +21,7 @@ import java.util.Set;
 /**
  * Created by robot on 10/21/2017.
  */
-@Autonomous(name="SensorTest9330", group = "Opmode")
+@Autonomous(name = "SensorTest9330", group = "Opmode")
 public class SensorTest9330 extends LinearOpMode {
 
     Hardware9330 robotMap = new Hardware9330();
@@ -45,7 +45,7 @@ public class SensorTest9330 extends LinearOpMode {
     boolean onRedTeam; // will be used to reverse the motor direction based off of alliance
 
     public void log(String name, Object value) {
-        telemetry.addData(name,value);
+        telemetry.addData(name, value);
     }
 
     public void checkStop() {
@@ -73,10 +73,10 @@ public class SensorTest9330 extends LinearOpMode {
             Iterator i = set.iterator();
             while (i.hasNext()) {
                 Map.Entry me = (Map.Entry) i.next();
-                if (me.getKey() == "Alpha") ColorAlpha = (Integer)me.getValue();
-                else if (me.getKey() == "Red") ColorRed = (Integer)me.getValue();
-                else if (me.getKey() == "Green") ColorGreen = (Integer)me.getValue();
-                else if (me.getKey() == "Blue") ColorBlue = (Integer)me.getValue();
+                if (me.getKey() == "Alpha") ColorAlpha = (Integer) me.getValue();
+                else if (me.getKey() == "Red") ColorRed = (Integer) me.getValue();
+                else if (me.getKey() == "Green") ColorGreen = (Integer) me.getValue();
+                else if (me.getKey() == "Blue") ColorBlue = (Integer) me.getValue();
                 log(me.getKey().toString(), me.getValue()); //Adds value and Info to telemetry
             }
         }
@@ -84,7 +84,7 @@ public class SensorTest9330 extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        log("Info","Initializing. Please wait.");
+        log("Info", "Initializing. Please wait.");
         telemetry.update();
 
         //Everything commented out at the top is only there if moving it to the bottom was a mistake
@@ -96,12 +96,12 @@ public class SensorTest9330 extends LinearOpMode {
         colorDistance = new ColorDistance9330(robotMap);
         clamps = new Clamps9330(robotMap);
         gyro.init();    //initializes gyro
-        info = PictographScan.init(hardwareMap,true);   //initializes Vuforia
+        info = PictographScan.init(hardwareMap, true);   //initializes Vuforia
 
-        log("Info","Initialized. Press start when ready.");
+        log("Info", "Initialized. Press start when ready.");
         telemetry.update();
         waitForStart();
-        while(opModeIsActive()) {
+        while (opModeIsActive()) {
             updatePictographInfo(PictographScan.checkPosition(info));
             updateColorDistance(colorDistance.getInfo());
             log("Gyro Pitch", gyro.getPitch());

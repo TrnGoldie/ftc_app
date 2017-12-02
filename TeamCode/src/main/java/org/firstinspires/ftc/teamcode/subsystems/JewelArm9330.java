@@ -10,30 +10,30 @@ public class JewelArm9330 {
 
     Hardware9330 hwMap;
     //Possible Positions for Servo
-    private final double UP_POS = 0.6;
+    private final double UP_POS = 0.5;
     private final double OUT_POS = 1.0;
     private boolean isArmUp;
 
-    public JewelArm9330(Hardware9330 robotMap){
+    public JewelArm9330(Hardware9330 robotMap) {
         hwMap = robotMap;
         hwMap.crystalArm.setPosition(UP_POS);
         isArmUp = true;
     }
 
-    public void toggleArmServo(){
-        if(isArmUp == true) lowerArmServo();
+    public void toggleArmServo() {
+        if (isArmUp == true) lowerArmServo();
         else raiseArmServo();
     }
 
     public void raiseArmServo() {
-        if(isArmUp == false){
+        if (isArmUp == false) {
             hwMap.crystalArm.setPosition(UP_POS);
             isArmUp = true;
         }
     }
 
     public void lowerArmServo() {
-        if(isArmUp == true){
+        if (isArmUp == true) {
             hwMap.crystalArm.setPosition(OUT_POS);
             isArmUp = false;
         }

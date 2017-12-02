@@ -13,12 +13,9 @@ import org.firstinspires.ftc.teamcode.opmodes.PracticeAutonomous;
 public class Drive9330 {
     private Hardware9330 hwMap = null;
     Integer turnError = 1;
-    Gyro9330 gyro; 
+    Gyro9330 gyro;
     int dist;
     int degree;
-
-
-
 
     public Drive9330(Hardware9330 robotMap) {
         hwMap = robotMap;
@@ -32,20 +29,18 @@ public class Drive9330 {
     }
 
     public void turnLeft(double speed, boolean allWheel) {
-        if (!allWheel)
-        {
+        if (!allWheel) {
             Hardware9330.leftMotor.setPower(0);
             Hardware9330.rightMotor.setPower(speed);
         }
         //Speed mush be between 0 and 100
-            Hardware9330.leftMotor.setPower(speed);
-            Hardware9330.rightMotor.setPower(speed);
+        Hardware9330.leftMotor.setPower(speed);
+        Hardware9330.rightMotor.setPower(speed);
 
     }
 
     public void turnRight(double speed, boolean allWheel) { //Speed mush be between 0 and 100
-        if (!allWheel)
-        {
+        if (!allWheel) {
             Hardware9330.leftMotor.setPower(speed);
             Hardware9330.rightMotor.setPower(0);
         }
@@ -81,11 +76,11 @@ public class Drive9330 {
         }
     }
 
-    public void Drive(int[][] points){
-    for(int i = 0; i < points.length; i++){
+    public void Drive(int[][] points) {
+        for (int i = 0; i < points.length; i++) {
             dist = points[i][0];
             degree = points[i][1];
-            turnLeft(degree,true);
+            turnLeft(degree, true);
             driveDistance(dist);
         }
     }

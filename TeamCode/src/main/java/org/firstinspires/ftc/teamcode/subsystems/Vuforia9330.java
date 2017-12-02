@@ -77,7 +77,7 @@ public class Vuforia9330 {
                  /* For fun, we also exhibit the navigational pose. In the Relic Recovery game,
                  * it is perhaps unlikely that you will actually need to act on this pose information, but
                  * we illustrate it nevertheless, for completeness. */
-        OpenGLMatrix pose = ((VuforiaTrackableDefaultListener)relicTemplate.getListener()).getPose();
+        OpenGLMatrix pose = ((VuforiaTrackableDefaultListener) relicTemplate.getListener()).getPose();
 
                 /* We further illustrate how to decompose the pose into useful rotational and
                  * translational components */
@@ -87,6 +87,7 @@ public class Vuforia9330 {
 
             // Extract the X, Y, and Z components of the offset of the target relative to the robot
             double tX = trans.get(0);
+            //lol rawr XD
             double tY = trans.get(1);
             double tZ = trans.get(2);
 

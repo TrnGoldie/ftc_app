@@ -22,7 +22,8 @@ import java.util.Set;
  * Created by robot on 9/25/2017.
  */
 
-@Autonomous(name="BackVuforia9330", group="Opmode")  // @Autonomous(...) is the other common choice
+@Autonomous(name = "BackVuforia9330", group = "Opmode")
+// @Autonomous(...) is the other common choice
 public class BackVuforia9330 extends LinearOpMode {
 
     Hardware9330 robotMap = new Hardware9330();
@@ -47,7 +48,7 @@ public class BackVuforia9330 extends LinearOpMode {
 
     public void log(String name, Object value) {
         telemetry.clear();
-        telemetry.addData(name,value);
+        telemetry.addData(name, value);
         telemetry.update();
     }
 
@@ -76,10 +77,10 @@ public class BackVuforia9330 extends LinearOpMode {
             Iterator i = set.iterator();
             while (i.hasNext()) {
                 Map.Entry me = (Map.Entry) i.next();
-                if (me.getKey() == "Alpha") ColorAlpha = (Integer)me.getValue();
-                else if (me.getKey() == "Red") ColorRed = (Integer)me.getValue();
-                else if (me.getKey() == "Green") ColorGreen = (Integer)me.getValue();
-                else if (me.getKey() == "Blue") ColorBlue = (Integer)me.getValue();
+                if (me.getKey() == "Alpha") ColorAlpha = (Integer) me.getValue();
+                else if (me.getKey() == "Red") ColorRed = (Integer) me.getValue();
+                else if (me.getKey() == "Green") ColorGreen = (Integer) me.getValue();
+                else if (me.getKey() == "Blue") ColorBlue = (Integer) me.getValue();
                 //log(me.getKey().toString(), me.getValue()); //Adds value and Info to telemetry
             }
         }
@@ -98,7 +99,7 @@ public class BackVuforia9330 extends LinearOpMode {
         colorDistance = new ColorDistance9330(robotMap);
         clamps = new Clamps9330(robotMap);
         gyro.init();    //initializes gyro
-        info = PictographScan.init(hardwareMap,true);   //initializes Vuforia
+        info = PictographScan.init(hardwareMap, true);   //initializes Vuforia
 
         log("Info", "Initialized. Press start when ready.");
         waitForStart();
@@ -111,7 +112,7 @@ public class BackVuforia9330 extends LinearOpMode {
                 checkStop();
             }
 
-            log("Info","Found image! Centering to the wall...");
+            log("Info", "Found image! Centering to the wall...");
             while (-TurnError > PictoYRotation || TurnError < PictoYRotation) { //while current rotation is outside allowed error
                 updatePictographInfo(PictographScan.checkPosition(info));   //update current positioning
                 log("Rotation of pictogram", PictoYRotation.toString());
@@ -120,8 +121,7 @@ public class BackVuforia9330 extends LinearOpMode {
                 else
                     drive.gyroTurn(-2, TurnSpeed, false);
 
-                if (PictoZTranslation > -250)
-                {
+                if (PictoZTranslation > -250) {
                     drive.driveForward(-.50);
                     sleep(250);
                 }

@@ -1,4 +1,5 @@
 package org.firstinspires.ftc.teamcode.subsystems;
+
 import com.qualcomm.robotcore.hardware.ColorSensor;
 
 import org.firstinspires.ftc.teamcode.Hardware9330;
@@ -12,7 +13,7 @@ public class ColorSensor9330 {
     ColorSensor cs;
     //boolean bledOn = true;
 
-    public ColorSensor9330(Hardware9330 robotMap){
+    public ColorSensor9330(Hardware9330 robotMap) {
         hwMap = robotMap;
         cs = hwMap.armCS;
         //cs.enableLed(bledOn);

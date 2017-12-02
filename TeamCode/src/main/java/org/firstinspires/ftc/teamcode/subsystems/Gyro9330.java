@@ -17,16 +17,18 @@ public class Gyro9330 {
     Orientation angles;
     BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
 
-    public Gyro9330(Hardware9330 robotMap) { hwMap = robotMap; }
+    public Gyro9330(Hardware9330 robotMap) {
+        hwMap = robotMap;
+    }
 
     public void resetGyro() {
         hwMap.gyro.initialize(parameters);
     }
 
     public void init() {
-        parameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
-        parameters.loggingEnabled      = true;
-        parameters.loggingTag          = "IMU";
+        parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
+        parameters.loggingEnabled = true;
+        parameters.loggingTag = "IMU";
 
         resetGyro();
     }
@@ -35,6 +37,7 @@ public class Gyro9330 {
         angles = hwMap.gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
         return angles.firstAngle;
     }
+
     public double getPitch() {
         angles = hwMap.gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
         return angles.secondAngle;

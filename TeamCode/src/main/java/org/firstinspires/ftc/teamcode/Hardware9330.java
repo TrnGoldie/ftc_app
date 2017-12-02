@@ -1,4 +1,5 @@
 package org.firstinspires.ftc.teamcode;
+
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
@@ -21,6 +22,7 @@ public class Hardware9330 {
     public static Servo relicHandServo;
     public static Servo relicWristServo;
     public static Servo crystalArm;
+    public static DcMotor relicArmMotor;
     public static DcMotor leftMotor;
     public static DcMotor glyphLiftMotor;
     public static ColorSensor platformCS;
@@ -32,10 +34,9 @@ public class Hardware9330 {
     public static DigitalChannel ultrasonicEcho;
 
 
+    HardwareMap hwMap = null;
 
-    HardwareMap hwMap                 = null;
-
-    private ElapsedTime period  = new ElapsedTime();
+    private ElapsedTime period = new ElapsedTime();
 
     public Hardware9330() {
     }
@@ -51,19 +52,20 @@ public class Hardware9330 {
         lowGlyphClamp.setDirection(Servo.Direction.REVERSE);
         //highGlyphClamp = hwMap.servo.get("highGlyphClamp");
         //highGlyphClamp.setDirection(Servo.Direction.REVERSE);
-        //relicHandServo = hwMap.servo.get("relicHandServo");
-        //relicHandServo.setDirection(Servo.Direction.REVERSE);
-        //relicWristServo = hwMap.servo.get("relicWristServo");
-        //relicWristServo.setDirection(Servo.Direction.REVERSE);
+        relicHandServo = hwMap.servo.get("relicHandServo");
+        relicHandServo.setDirection(Servo.Direction.REVERSE);
+        relicWristServo = hwMap.servo.get("relicWristServo");
+        relicWristServo.setDirection(Servo.Direction.REVERSE);
         crystalArm = hwMap.servo.get("crystalArm");
         crystalArm.setDirection(Servo.Direction.REVERSE);
         leftMotor = hwMap.dcMotor.get("leftMotor");
         glyphLiftMotor = hwMap.dcMotor.get("liftMotor");
+        relicArmMotor = hwMap.dcMotor.get("relicArm");
         platformCS = hwMap.get(ColorSensor.class, "platformCS");
         armCS = hwMap.get(ColorSensor.class, "armCS");
         rightMotor = hwMap.dcMotor.get("rightMotor");
         gyro = hwMap.get(BNO055IMU.class, "imu");
-        touch  = hwMap.get(DigitalChannel.class, "touch");
+        touch = hwMap.get(DigitalChannel.class, "touch");
 
         leftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);

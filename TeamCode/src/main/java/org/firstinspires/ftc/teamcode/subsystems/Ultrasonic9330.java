@@ -9,7 +9,11 @@ import org.firstinspires.ftc.teamcode.Hardware9330;
 public class Ultrasonic9330 {
 
     private Hardware9330 hwMap = null;
-    public Ultrasonic9330(Hardware9330 robotMap) { hwMap = robotMap; }
+
+    public Ultrasonic9330(Hardware9330 robotMap) {
+        hwMap = robotMap;
+    }
+
     double initialMicroTime;
     double initialTimeSeconds;
     Double distance;
@@ -19,7 +23,9 @@ public class Ultrasonic9330 {
 
     public void microSecondWait(int microseconds) {
         initialMicroTime = System.nanoTime(); //reset initial time
-        while (System.nanoTime() - initialMicroTime < microseconds*1000) {;} //do nothing while current time is less than goal
+        while (System.nanoTime() - initialMicroTime < microseconds * 1000) {
+            ;
+        } //do nothing while current time is less than goal
     }
 
     public void restartTimer() {
@@ -34,10 +40,14 @@ public class Ultrasonic9330 {
 
     void read_pulse() {
         restartTimer();
-        while(hwMap.ultrasonicEcho.getState() == false && timer(1)) {rising_time = System.nanoTime();}
+        while (hwMap.ultrasonicEcho.getState() == false && timer(1)) {
+            rising_time = System.nanoTime();
+        }
         if (!timer(1)) return;
-        while(hwMap.ultrasonicEcho.getState() == true) {falling_time = System.nanoTime();}
-        duration = (falling_time - rising_time)/1000000;
+        while (hwMap.ultrasonicEcho.getState() == true) {
+            falling_time = System.nanoTime();
+        }
+        duration = (falling_time - rising_time) / 1000000;
         distance = Math.floor((duration * 34300) / 2);
         /* duration = 0;
         // On rising edge: record current time.
@@ -61,8 +71,6 @@ public class Ultrasonic9330 {
         if (distance == 0.0) return "Cannot read distance.";
         return distance.toString();
     }
-
-
 
 
 }

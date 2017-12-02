@@ -13,13 +13,12 @@ import org.firstinspires.ftc.teamcode.subsystems.Ultrasonic9330;
 /**
  * Created by robot on 10/20/2017.
  */
-@Autonomous(name="Practice Autonomous", group="Opmode")
-public class PracticeAutonomous extends LinearOpMode
-{
+@Autonomous(name = "Practice Autonomous", group = "Opmode")
+public class PracticeAutonomous extends LinearOpMode {
     Hardware9330 hwMap = new Hardware9330();
 
     public void log(String title, Object value) {
-        telemetry.addData(title,value);
+        telemetry.addData(title, value);
         telemetry.update();
     }
 
@@ -42,11 +41,11 @@ public class PracticeAutonomous extends LinearOpMode
             //hwMap.rightMotor.setPower(50);
             while (hwMap.touch.getState() && !isStopRequested()) {
                 //telemetry.addData("Ultrasonic ", ultrasonic.getDistance());
-               // telemetry.update();
-                telemetry.addData("Program","We is turnin ninety degrees yo!!!!!!");
+                // telemetry.update();
+                telemetry.addData("Program", "We is turnin ninety degrees yo!!!!!!");
                 telemetry.update();
-                drive.gyroTurn(90, 0.2,true);
-                telemetry.addData("Program","We're currently driving forward!");
+                drive.gyroTurn(90, 0.2, true);
+                telemetry.addData("Program", "We're currently driving forward!");
                 telemetry.update();
                 drive.driveForward(0.5);
                 sleep(1000);

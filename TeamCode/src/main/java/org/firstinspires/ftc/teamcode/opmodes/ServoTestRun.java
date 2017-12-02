@@ -12,7 +12,7 @@ import org.firstinspires.ftc.teamcode.subsystems.RelicPickup9330;
  * Created by robot on 10/30/2017.
  */
 
-@Autonomous(name="ServoTestRun", group = "Opmode")
+@Autonomous(name = "ServoTestRun", group = "Opmode")
 public class ServoTestRun extends LinearOpMode {
     Hardware9330 robotMap = new Hardware9330();
     JewelArm9330 BoopJR = new JewelArm9330(robotMap);
