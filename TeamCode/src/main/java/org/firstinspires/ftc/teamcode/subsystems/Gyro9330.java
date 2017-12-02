@@ -35,7 +35,11 @@ public class Gyro9330 {
 
     public double getYaw() {
         angles = hwMap.gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
-        return angles.firstAngle;
+       if(angles.firstAngle >= 0){
+           return angles.firstAngle;
+       }else{
+          return 360 + angles.firstAngle;
+       }
     }
 
     public double getPitch() {

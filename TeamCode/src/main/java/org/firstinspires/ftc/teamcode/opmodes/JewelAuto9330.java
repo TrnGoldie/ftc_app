@@ -84,14 +84,14 @@ public class JewelAuto9330 extends LinearOpMode {
             log("Info", "We are red! Knocking down blue.");
             if (cs9330.r() > cs9330.b()) {
                 //drive.gyroTurn(90, TurnSpeed,false);
-                drive.driveForward(-0.5);
+                drive.driveForward(0.5);
                 sleep(300);
                 drive.stopDrive();
                 jewelArm.raiseArmServo();
                 //drive.gyroTurn(180, TurnSpeed,false);
             } else {
                 //drive.gyroTurn(-90,TurnSpeed,false);
-                drive.driveForward(0.5);
+                drive.driveForward(-0.5);
                 sleep(300);
                 drive.stopDrive();
                 jewelArm.raiseArmServo();
@@ -101,13 +101,13 @@ public class JewelAuto9330 extends LinearOpMode {
             log("Info", "We are blue! Knocking down red.");
             if (cs9330.r() > cs9330.b()) {
                 //drive.gyroTurn(-90, TurnSpeed,false);
-                drive.driveForward(0.5);
+                drive.driveForward(-0.5);
                 sleep(300);
                 drive.stopDrive();
                 jewelArm.raiseArmServo();
             } else {
                 //drive.gyroTurn(90, TurnSpeed,false);
-                drive.driveForward(-0.5);
+                drive.driveForward(0.5);
                 sleep(300);
                 drive.stopDrive();
                 jewelArm.raiseArmServo();
