@@ -117,9 +117,9 @@ public class FrontVuforia9330 extends LinearOpMode {
                 updatePictographInfo(PictographScan.checkPosition(info));   //update current positioning
                 log("Rotation of pictogram", PictoYRotation.toString());
                 if (PictoYRotation < 0) //Align self more parallel to the wall
-                    drive.gyroTurn(2, TurnSpeed, false);
+                    drive.gyroTurn(2, TurnSpeed, false, true);
                 else
-                    drive.gyroTurn(-2, TurnSpeed, false);
+                    drive.gyroTurn(-2, TurnSpeed, false, true);
 
                 if (PictoZTranslation > -250) {
                     drive.driveForward(-.50);

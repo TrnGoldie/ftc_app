@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.Hardware9330;
 import org.firstinspires.ftc.teamcode.subsystems.Drive9330;
+import org.firstinspires.ftc.teamcode.subsystems.Gyro9330;
 import org.firstinspires.ftc.teamcode.subsystems.Ultrasonic9330;
 
 /**
@@ -25,7 +26,8 @@ public class PracticeAutonomous extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         hwMap.init(hardwareMap);
-        Drive9330 drive = new Drive9330(hwMap,PracticeAutonomous.this.telemetry);
+        Gyro9330 gyro = new Gyro9330(hwMap);
+        Drive9330 drive = new Drive9330(hwMap,PracticeAutonomous.this.telemetry, gyro);
 
         // wait for the start button to be pressed.
         telemetry.addData(">", "Press start!");
@@ -42,10 +44,10 @@ public class PracticeAutonomous extends LinearOpMode {
             while (hwMap.touch.getState() && !isStopRequested()) {
                 telemetry.addData("Program", "We is turnin ninety degrees yo!!!!!!");
                 telemetry.update();
-                drive.gyroTurn(90, 0.25, true);
+                drive.gyroTurn(90, 0.25, true, true);
                 telemetry.addData("Program", "We're currently driving 2 feet forward!");
                 telemetry.update();
-                drive.driveDistance(24);
+                drive.driveDistance(24,true);
             }
             //hwMap.rightMotor.setPower(0);
             stop();

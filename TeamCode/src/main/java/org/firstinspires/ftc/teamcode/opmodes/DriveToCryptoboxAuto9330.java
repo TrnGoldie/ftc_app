@@ -23,7 +23,7 @@ public class DriveToCryptoboxAuto9330 extends LinearOpMode {
         robotMap.init(hardwareMap);
         drive = new Drive9330(robotMap);
         clamps = new Clamps9330(robotMap);
-        drive.Drive(points);
+
         //Probably
     }
 }

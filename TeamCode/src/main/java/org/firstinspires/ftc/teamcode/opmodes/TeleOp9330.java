@@ -21,7 +21,7 @@ public class TeleOp9330 extends OpMode {
     Clamps9330 clamps;
     JewelArm9330 crystalArm;
     GlyphLift9330 glyphLift9330;
-    RelicPickup9330 relicPickup;
+    //RelicPickup9330 relicPickup;
 
 
     float yPower = 0;
@@ -42,7 +42,7 @@ public class TeleOp9330 extends OpMode {
         clamps = new Clamps9330(robotMap);
         crystalArm = new JewelArm9330(robotMap);
         glyphLift9330 = new GlyphLift9330(robotMap);
-        relicPickup = new RelicPickup9330(robotMap);
+        //relicPickup = new RelicPickup9330(robotMap);
     }
 
     /*
@@ -65,7 +65,7 @@ public class TeleOp9330 extends OpMode {
     @Override
     public void loop() {
         yPower = -gamepad1.left_stick_y;
-        spinPower = gamepad1.right_stick_x;
+        spinPower = Math.round(gamepad1.right_stick_x * 0.8);
 
         //Set powers of the motors
         Hardware9330.leftMotor.setPower(yPower + spinPower);
@@ -114,6 +114,7 @@ public class TeleOp9330 extends OpMode {
             glyphLift9330.liftStop();
         }
 
+        /*
         //If left is pressed on the dpad toggle the hand servo
         if (gamepad2.left_bumper) {
             if (lBumpHeld == true) return;
@@ -135,7 +136,7 @@ public class TeleOp9330 extends OpMode {
         } else if(gamepad2.right_trigger > 0.1) {
             relicPickup.moveArm((int)gamepad2.right_trigger);
         }
-
+*/
 
         telemetry.update();
     }
