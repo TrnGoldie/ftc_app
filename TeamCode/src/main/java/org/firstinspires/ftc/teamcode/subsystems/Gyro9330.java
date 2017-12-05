@@ -12,12 +12,13 @@ import org.firstinspires.ftc.teamcode.Hardware9330;
  * Created by robot on 10/23/2017.
  */
 
-public class Gyro9330 {
+public class Gyro9330 implements Runnable{
     private Hardware9330 hwMap = null;
     Orientation angles;
     BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
     float absoluteAngle;
     float lastAngle = 0;
+    private Thread thread;
 
     public Gyro9330(Hardware9330 robotMap) {
         hwMap = robotMap;
@@ -33,28 +34,33 @@ public class Gyro9330 {
         parameters.loggingTag = "IMU";
 
         resetGyro();
+
+        thread = new Thread(this);
+        thread.start();
     }
 
-    public double getYaw() { //calculates new absolute angle and returns it. MUST RUN IN THE BACKGROUND CONSTANTLY!!
+    public void calculateYaw() {
         float currentAngle;
         angles = hwMap.gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
-       if(angles.firstAngle >= 0) currentAngle = angles.firstAngle;
-       else currentAngle = 360 + angles.firstAngle;
+        if(angles.firstAngle >= 0) currentAngle = angles.firstAngle;
+        else currentAngle = 360 + angles.firstAngle;
 
-       if (lastAngle < currentAngle) { //if the last angle is less than the current (increase)
-           if (currentAngle - lastAngle > 200) { //if the change is more than 200 (overflow from 0 to 360?)
-               absoluteAngle -= lastAngle + (360 - currentAngle); //get the actual change and subtract it
-           } else { //if the change is a normal increase
-               absoluteAngle += currentAngle - lastAngle; //add the difference
-           }
-       } else if (lastAngle > currentAngle) { //if the last angle is more than the current (decrease)
+        if (lastAngle < currentAngle) { //if the last angle is less than the current (increase)
+            if (currentAngle - lastAngle > 200) { //if the change is more than 200 (overflow from 0 to 360?)
+                absoluteAngle -= lastAngle + (360 - currentAngle); //get the actual change and subtract it
+            } else { //if the change is a normal increase
+                absoluteAngle += currentAngle - lastAngle; //add the difference
+            }
+        } else if (lastAngle > currentAngle) { //if the last angle is more than the current (decrease)
             if (lastAngle - currentAngle > 200) { //if the change is more than 200 (overflow from 360 to 0?))
                 absoluteAngle += (360 - lastAngle) + currentAngle; //get the actual change and add it
             } else { //if the change is a normal decrease
                 absoluteAngle -= lastAngle - currentAngle;//subtract the difference
             }
-       }
+        }
+    }
 
+    public double getYaw() { //calculates new absolute angle and returns it. MUST RUN IN THE BACKGROUND CONSTANTLY!!
        return absoluteAngle;
     }
 
@@ -71,4 +77,18 @@ public class Gyro9330 {
     public boolean isCalibrated() {
         return hwMap.gyro.isGyroCalibrated();
     }
+
+    @Override
+    public void run() {
+        while(true) {
+            try {
+                calculateYaw();
+                thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                break;
+            }
+        }
+    }
+
 }
