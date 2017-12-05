@@ -26,6 +26,7 @@ public class Gyro9330 implements Runnable{
 
     public void resetGyro() {
         hwMap.gyro.initialize(parameters);
+        absoluteAngle = 0;
     }
 
     public void init() {
