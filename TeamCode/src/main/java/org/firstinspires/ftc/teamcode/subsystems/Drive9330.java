@@ -3,9 +3,7 @@ package org.firstinspires.ftc.teamcode.subsystems;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.Hardware9330;
-import org.firstinspires.ftc.teamcode.opmodes.PracticeAutonomous;
 
 /**
  * Created by robot on 9/25/2017.
