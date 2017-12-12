@@ -57,6 +57,8 @@ public class TeleOp9330 extends OpMode {
      */
     @Override
     public void start() {
+        robotMap.leftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        robotMap.rightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
 
     /*
@@ -64,12 +66,12 @@ public class TeleOp9330 extends OpMode {
      */
     @Override
     public void loop() {
-        yPower = Math.round(-gamepad1.left_stick_y * 0.5);
-        spinPower = Math.round(gamepad1.right_stick_x * 0.5);
+        yPower = Math.round(-gamepad1.left_stick_y* .8);
+        spinPower = Math.round(gamepad1.right_stick_x * .8);
 
         //Set powers of the motors
         Hardware9330.leftMotor.setPower(yPower + spinPower);
-        Hardware9330.rightMotor.setPower(yPower - spinPower);
+        Hardware9330.rightMotor.setPower(yPower -  spinPower);
 
         //If "A" is pressed on the gamepad toggle the lower clamp
         /*

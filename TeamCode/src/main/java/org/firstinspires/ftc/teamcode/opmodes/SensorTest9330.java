@@ -104,9 +104,13 @@ public class SensorTest9330 extends LinearOpMode {
         while (opModeIsActive()) {
             updatePictographInfo(PictographScan.checkPosition(info));
             updateColorDistance(colorDistance.getInfo());
+            log("Crystal Red",cs9330.r());
+            log("Crystal Blue",cs9330.b());
             log("Gyro Pitch", gyro.getPitch());
             log("Gyro Roll", gyro.getRoll());
             log("Gyro Yaw", gyro.getYaw());
+            log("Right Encoder",robotMap.rightMotor.getCurrentPosition());
+            log("Left Encoder",robotMap.leftMotor.getCurrentPosition());
             telemetry.update();
             checkStop();
         }

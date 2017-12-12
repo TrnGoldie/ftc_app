@@ -85,11 +85,14 @@ public class Drive9330 {
         while(Hardware9330.rightMotor.isBusy() || Hardware9330.leftMotor.isBusy()) {
             if(useGyro) {
                 if (gyro.getYaw() < startPos - straightError|| gyro.getYaw() > startPos + straightError) {
-                    Hardware9330.rightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-                    Hardware9330.leftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-                    gyroTurn((float) startPos, 0.2, true);
-                    Hardware9330.rightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                    Hardware9330.leftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    //Hardware9330.rightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+                    //Hardware9330.leftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+                    if(gyro.getYaw() < startPos - straightError)
+                        gyroTurn(2, 0.2, true);
+                    else
+                        gyroTurn(-2, 0.2, true);
+                    //Hardware9330.rightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    //Hardware9330.leftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 }
             }
         }
