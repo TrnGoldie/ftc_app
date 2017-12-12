@@ -32,11 +32,11 @@ public class SensorTest9330 extends LinearOpMode {
     Drive9330 drive;
     JewelArm9330 crystalarm;
     Clamps9330 clamps;
-    Integer TurnError = 1;
-    Double TurnSpeed = 0.2;
+    int TurnError = 1;
+    double TurnSpeed = 0.2;
     VuforiaTrackables info;
-    Double PictoYRotation;
-    Double PictoZTranslation;
+    double PictoYRotation;
+    double PictoZTranslation;
     String PictoImageType;
     Integer ColorRed;
     Integer ColorGreen;
@@ -58,9 +58,9 @@ public class SensorTest9330 extends LinearOpMode {
             Iterator i = set.iterator();
             while (i.hasNext()) {
                 Map.Entry me = (Map.Entry) i.next();
-                if (me.getKey() == "Y Rotation") PictoYRotation = (Double) me.getValue();
+                if (me.getKey() == "Y Rotation") PictoYRotation = (double) me.getValue();
                 else if (me.getKey() == "Z Translation (Distance)")
-                    PictoZTranslation = (Double) me.getValue();
+                    PictoZTranslation = (double) me.getValue();
                 else if (me.getKey() == "Image Position") PictoImageType = (String) me.getValue();
                 log(me.getKey().toString(), me.getValue()); //Adds value and Info to telemetry
             }

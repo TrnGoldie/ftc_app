@@ -96,11 +96,11 @@ public class Vuforia9330 {
             double rY = rot.secondAngle;
             double rZ = rot.thirdAngle;
 
-            //hm.put("Rx", new Double(rX));
+            //hm.put("Rx", new double(rX));
             hm.put("Y Rotation", new Double(rY)); //Rotation of camera from center of image
-            //hm.put("Rz", new Double(rZ));
-            //hm.put("Tx", new Double(tX));
-            //hm.put("Ty", new Double(tY));
+            //hm.put("Rz", new duble(rZ));
+            //hm.put("Tx", new double(tX));
+            //hm.put("Ty", new double(tY));
             hm.put("Z Translation (Distance)", new Double(tZ)); //Distance from image
             hm.put("Image Position", new String(vuMark.toString()));
         }

@@ -18,11 +18,11 @@ public class RelicPickup9330 {
     int armMIN = 0;
 
 
-    static final Double OPEN_POS = 0.0;
-    static final Double CLOSED_POS = 0.6;
+    static final double OPEN_POS = 0.0;
+    static final double CLOSED_POS = 0.6;
 
-    static final Double LOW_POS = 0.0;
-    static final Double HIGH_POS = 0.5;
+    static final double LOW_POS = 0.0;
+    static final double HIGH_POS = 0.5;
 
     public RelicPickup9330(Hardware9330 robotMap) {
         hwMap = robotMap;

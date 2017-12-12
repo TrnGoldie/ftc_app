@@ -34,8 +34,8 @@ public class BackVuforia9330 extends LinearOpMode {
     Drive9330 drive;
     JewelArm9330 crystalarm;
     Clamps9330 clamps;
-    Integer TurnError = 1;
-    Double TurnSpeed = 0.1;
+    int TurnError = 1;
+    double TurnSpeed = 0.1;
     VuforiaTrackables info;
     Double PictoYRotation;
     Double PictoZTranslation;
@@ -62,9 +62,9 @@ public class BackVuforia9330 extends LinearOpMode {
             Iterator i = set.iterator();
             while (i.hasNext()) {
                 Map.Entry me = (Map.Entry) i.next();
-                if (me.getKey() == "Y Rotation") PictoYRotation = (Double) me.getValue();
+                if (me.getKey() == "Y Rotation") PictoYRotation = (double) me.getValue();
                 else if (me.getKey() == "Z Translation (Distance)")
-                    PictoZTranslation = (Double) me.getValue();
+                    PictoZTranslation = (double) me.getValue();
                 else if (me.getKey() == "Image Position") PictoImageType = (String) me.getValue();
                 //log(me.getKey().toString(), me.getValue()); //Adds value and Info to telemetry
             }
@@ -117,9 +117,9 @@ public class BackVuforia9330 extends LinearOpMode {
                 updatePictographInfo(PictographScan.checkPosition(info));   //update current positioning
                 log("Rotation of pictogram", PictoYRotation.toString());
                 if (PictoYRotation < 0) //Align self more parallel to the wall
-                    drive.gyroTurn(2, TurnSpeed, false, true);
+                    drive.gyroTurn(2, TurnSpeed, false);
                 else
-                    drive.gyroTurn(-2, TurnSpeed, false, true);
+                    drive.gyroTurn(-2, TurnSpeed, false);
 
                 if (PictoZTranslation > -250) {
                     drive.driveForward(-.50);

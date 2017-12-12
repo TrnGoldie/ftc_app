@@ -13,8 +13,8 @@ import org.firstinspires.ftc.teamcode.subsystems.JewelArm9330;
 @Autonomous(name = "AutoDriveTest9330", group = "Opmode")
 public class AutoDriveTest9330 extends LinearOpMode {
     Hardware9330 robotMap = new Hardware9330();
-    Double Diameter = 3.78;
-    Double Circumference = 3.1415 * Diameter;
+    double Diameter = 3.78;
+    double Circumference = 3.1415 * Diameter;
     int PPR = 560;
     int oneInchOfMovement = (int)Math.round(PPR / Circumference);
 
