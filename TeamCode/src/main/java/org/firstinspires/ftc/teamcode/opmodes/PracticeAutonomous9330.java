@@ -40,7 +40,7 @@ public class PracticeAutonomous9330 extends LinearOpMode {
             while (hwMap.touch.getState() && !isStopRequested()) {
                 telemetry.addData("Program", "We is turnin ninety degrees yo!!!!!!");
                 telemetry.update();
-                drive.gyroTurn(90, 0.25, true, true);
+                drive.gyroTurn(90, 0.25, true);
                 telemetry.addData("Program", "We're currently driving 2 feet forward!");
                 telemetry.update();
                 drive.driveDistance(24,true);

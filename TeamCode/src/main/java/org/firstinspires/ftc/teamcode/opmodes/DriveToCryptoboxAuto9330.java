@@ -34,7 +34,7 @@ public class DriveToCryptoboxAuto9330 extends LinearOpMode {
         waitForStart();
 
         drive.driveDistance(-24, true);
-        drive.gyroTurn(90, 30, true, true);
+        drive.gyroTurn(90, 30, true);
         drive.driveDistance(8, true);
 
 
