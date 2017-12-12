@@ -47,18 +47,19 @@ public class Gyro9330 implements Runnable{
         else currentAngle = 360 + angles.firstAngle;
 
         if (lastAngle < currentAngle) { //if the last angle is less than the current (increase)
-            if (currentAngle - lastAngle > 200) { //if the change is more than 200 (overflow from 0 to 360?)
+            if (currentAngle - lastAngle > 180) { //if the change is more than 180 (overflow from 0 to 360?)
                 absoluteAngle -= lastAngle + (360 - currentAngle); //get the actual change and subtract it
             } else { //if the change is a normal increase
                 absoluteAngle += currentAngle - lastAngle; //add the difference
             }
         } else if (lastAngle > currentAngle) { //if the last angle is more than the current (decrease)
-            if (lastAngle - currentAngle > 200) { //if the change is more than 200 (overflow from 360 to 0?))
+            if (lastAngle - currentAngle > 180) { //if the change is more than 180 (overflow from 360 to 0?))
                 absoluteAngle += (360 - lastAngle) + currentAngle; //get the actual change and add it
             } else { //if the change is a normal decrease
                 absoluteAngle -= lastAngle - currentAngle;//subtract the difference
             }
         }
+        lastAngle = currentAngle;
     }
 
     public double getYaw() { //calculates new absolute angle and returns it. MUST RUN IN THE BACKGROUND CONSTANTLY!!
@@ -84,7 +85,7 @@ public class Gyro9330 implements Runnable{
         while(true) {
             try {
                 calculateYaw();
-                thread.sleep(500);
+                thread.sleep(200);
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 break;
