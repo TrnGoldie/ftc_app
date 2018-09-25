@@ -31,8 +31,6 @@ package org.firstinspires.ftc.teamcode.opmodes;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.robotcore.util.Range;
 
 import org.firstinspires.ftc.teamcode.Hardware9330;
 
@@ -40,10 +38,10 @@ import org.firstinspires.ftc.teamcode.Hardware9330;
 //@Disabled
 public class TeleOp9330 extends OpMode
 {
-    Hardware9330 hwMap = new Hardware9330();
-    double forward;
-    double side;
-    double turn;
+    private Hardware9330 hwMap = new Hardware9330();
+    private double forward;
+    //double side;
+    private double turn;
 
     @Override
     public void init() {
