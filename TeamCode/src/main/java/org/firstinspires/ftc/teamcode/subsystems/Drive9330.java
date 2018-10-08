@@ -30,6 +30,10 @@ public class Drive9330 {
         Hardware9330.rightBack.setPower(-speed);
     }
 
+    public void gyroTurn() {
+
+    }
+
     public void stopDrive() {
         Hardware9330.leftFront.setPower(0);
         Hardware9330.leftBack.setPower(0);
