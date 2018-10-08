@@ -28,6 +28,7 @@ android {
 repositories {
     flatDir { dirs '../libs' }
     mavenCentral()
+    jcenter()
 }
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
