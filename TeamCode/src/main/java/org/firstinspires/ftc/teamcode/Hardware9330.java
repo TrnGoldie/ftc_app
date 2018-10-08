@@ -1,17 +1,17 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Hardware9330 {
-    /* junha made me make this
-    */
     public static DcMotor leftFront;
     public static DcMotor leftBack;
     public static DcMotor rightFront;
     public static DcMotor rightBack;
 
     HardwareMap hwMap = null;
+    public static BNO055IMU gyro;
 
     public Hardware9330() {
 
